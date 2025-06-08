@@ -1,39 +1,37 @@
-Agentic RAG Travel Budget Planner
+# Agentic RAG Travel Budget Planner
 
-![alt text](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
-
-
-![alt text](https://img.shields.io/badge/LangChain-0.2-green?logo=langchain)
-
-
-![alt text](https://img.shields.io/badge/OpenAI-GPT--4o-black?logo=openai)
-
-
-![alt text](https://img.shields.io/badge/FastAPI-0.110-teal?logo=fastapi)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
+![LangChain](https://img.shields.io/badge/LangChain-0.2-green?logo=langchain)
+![OpenAI GPT-4o](https://img.shields.io/badge/OpenAI-GPT--4o-black?logo=openai)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110-teal?logo=fastapi)
 
 An intelligent, agentic travel assistant that creates personalized travel plans based on your destination, budget, and trip duration. This project leverages a Retrieval-Augmented Generation (RAG) architecture where an LLM-powered agent uses live APIs as tools to gather information and reason about it.
 
-🚀 Core Features
+---
+
+## 🚀 Core Features
 
 This agent acts as a smart assistant that:
 
-Accepts a destination, total budget, and trip duration as input.
+- Accepts a destination, total budget, and trip duration as input.
+- Dynamically calls external APIs (tools) to retrieve real-time data for hotels and weather.
+- Reasons about the data to create a practical, personalized travel plan with a cost breakdown.
+- Provides a clear, summarized response with actionable suggestions.
 
-Dynamically calls external APIs (tools) to retrieve real-time data for hotels and weather.
+| Feature               | Description                                                                                 |
+|-----------------------|---------------------------------------------------------------------------------------------|
+| User Inputs           | Country/City, Budget (e.g. $1000), Duration (e.g. 5 days)                                  |
+| RAG Retrieval         | Fetches live data from hotel search APIs (Booking.com) and weather APIs.                    |
+| Agentic Reasoning     | Calculates a daily budget, filters affordable hotels, and summarizes weather.               |
+| Response Output       | Suggests hotels, provides a cost estimate, and includes weather information.                |
 
-Reasons about the data to create a practical, personalized travel plan with a cost breakdown.
+---
 
-Provides a clear, summarized response with actionable suggestions.
+## 💡 Demonstration
 
-Feature	Description
-User Inputs	Country/City, Budget (e.g. $1000), Duration (e.g. 5 days)
-RAG Retrieval	Fetches live data from hotel search APIs (Booking.com) and weather APIs.
-Agentic Reasoning	Calculates a daily budget, filters affordable hotels, and summarizes weather.
-Response Output	Suggests hotels, provides a cost estimate, and includes weather information.
-demonstrations
+**Sample interaction via CLI:**
 
-Here is a sample interaction with the agent via the command-line interface.
-
+```
 You: I want to go to Tokyo, Japan for 5 days with a $1500 budget.
 
 > Entering new AgentExecutor chain...
@@ -59,129 +57,122 @@ I have gathered all the necessary information to create a travel plan.
 
 Agent: Here is a suggested travel plan for your trip to Tokyo based on a $1500 budget for 5 days:
 
-*   **Budget Overview**:
-    *   **Max Hotel Budget**: I have allocated approximately $135 per night for accommodation.
-    *   **Estimated Daily Spend**: For food and local transport in Tokyo, a reasonable daily budget is around $60-$80.
+* **Budget Overview**:
+    * **Max Hotel Budget**: I have allocated approximately $135 per night for accommodation.
+    * **Estimated Daily Spend**: For food and local transport in Tokyo, a reasonable daily budget is around $60-$80.
 
-*   **Hotel Suggestions (under $135/night)**:
+* **Hotel Suggestions (under $135/night)**:
     - **HOTEL MYSTAYS Ueno East** (Price: ~$125/night, Rating: 8.1/10)
     - **Sotetsu Fresa Inn Higashi Shinjuku** (Price: ~$130/night, Rating: 8.2/10)
     - **APA Hotel Asakusa Ekimae** (Price: ~$110/night, Rating: 7.9/10)
 
-*   **Weather in Tokyo**:
+* **Weather in Tokyo**:
     The current weather in Tokyo is: Mainly clear with a temperature of 24°C.
 
-*   **Total Estimated Cost**:
-    *   Accommodation: ~$625 (for 5 nights)
-    *   Food & Transport: ~$350 (at $70/day)
-    *   **Total**: ~**$975**. This leaves you with a comfortable buffer in your budget for activities and shopping.
+* **Total Estimated Cost**:
+    * Accommodation: ~$625 (for 5 nights)
+    * Food & Transport: ~$350 (at $70/day)
+    * **Total**: ~**$975**. This leaves you with a comfortable buffer in your budget for activities and shopping.
+```
 
-🛠️ Tech Stack
+---
 
-Backend Logic: Python
+## 🛠️ Tech Stack
 
-LLM Framework: 🦜️🔗 LangChain
+- **Backend Logic:** Python
+- **LLM Framework:** 🦜️🔗 LangChain
+- **LLM:** OpenAI GPT-4o
+- **API Server:** FastAPI
+- **Dependencies:** python-dotenv, requests, uvicorn
 
-LLM: OpenAI gpt-3.5-turbo
+---
 
-API Server: FastAPI
-
-Dependencies: python-dotenv, requests, uvicorn
-
-⚙️ Setup and Installation
+## ⚙️ Setup and Installation
 
 Follow these steps to set up the project locally.
 
-1. Prerequisites
+### 1. Prerequisites
 
-Python 3.10+
+- Python 3.10+
+- An OpenAI API Key.
+- A RapidAPI Account and Key.
 
-An OpenAI API Key.
+### 2. Clone the Repository
 
-A RapidAPI Account and Key.
-
-2. Clone the Repository
+```bash
 git clone https://github.com/your-username/travel-agentic-rag.git
 cd travel-agentic-rag
+```
 
-3. Create and Activate a Virtual Environment
+### 3. Create and Activate a Virtual Environment
 
-It is highly recommended to use a virtual environment to manage dependencies.
-
-On macOS/Linux:
-
+**macOS/Linux:**
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
-
-On Windows:
-
+**Windows:**
+```bash
 python -m venv venv
 .\venv\Scripts\activate
+```
 
-4. Install Dependencies
+### 4. Install Dependencies
 
-Install all the required Python packages from the requirements.txt file.
-
+```bash
 pip install -r requirements.txt
+```
 
-5. Set Up API Keys
+### 5. Set Up API Keys
 
-You need to provide your API keys in a .env file.
+Create a file named `.env` by copying the example:
 
-Create a file named .env by copying the example file:
-
+```bash
 cp .env.example .env
+```
 
-Open the .env file and add your secret keys:
+Open the `.env` file and add your secret keys:
 
+```ini
 # .env
 OPENAI_API_KEY="sk-..."
 RAPIDAPI_KEY="..."
+```
 
+#### Get Your Keys
 
-Get Your Keys:
+- **OpenAI:** Get your key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+- **RapidAPI:**
+    - Sign up at [RapidAPI.com](https://rapidapi.com/).
+    - Subscribe to the Booking Scraper API on the free BASIC plan.
+    - Find your X-RapidAPI-Key on the API's "Endpoints" page.
 
-OpenAI: Get your key from platform.openai.com/api-keys. You may need to add billing information to your account to access GPT-4 models.
+> **Security Note:** The `.env` file is included in `.gitignore` to prevent you from accidentally committing your secret keys.
 
-RapidAPI:
+---
 
-Sign up at RapidAPI.com.
+## ▶️ How to Run
 
-Subscribe to the Booking Scraper API on the free BASIC plan.
+You can run the agent in two ways: as a command-line tool or as a FastAPI web server.
 
-Find your X-RapidAPI-Key on the API's "Endpoints" page.
+### 1. Run the Command-Line Interface (CLI)
 
-Security Note: The .env file is included in .gitignore to prevent you from accidentally committing your secret keys to version control.
-
-▶️ How to Run
-
-You can run the agent in two ways: as a command-line tool for testing or as a FastAPI web server.
-
-1. Run the Command-Line Interface (CLI)
-
-This is the best way to quickly test the agent's functionality.
-
+```bash
 python app.py cli
+```
+You will be prompted to enter your travel query. Type `exit` to quit.
 
+### 2. Run the FastAPI Server
 
-You will be prompted to enter your travel query. Type exit to quit.
-
-2. Run the FastAPI Server
-
-This exposes the agent's logic as an API endpoint.
-``bash
+```bash
 uvicorn app:app --reload
+```
+- The server will be running at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+- Access the interactive API docs at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
-
-The server will be running at http://127.0.0.1:8000.
-
-Access the interactive API documentation (Swagger UI) at http://127.0.0.1:8000/docs.
-
-You can send a POST request to the /plan-trip endpoint to get a travel plan.
-
-Example with curl:
-
+Example POST request:
+```bash
 curl -X 'POST' \
   'http://127.0.0.1:8000/plan-trip' \
   -H 'accept: application/json' \
@@ -191,48 +182,49 @@ curl -X 'POST' \
   "budget": 1000,
   "duration_days": 4
 }'
+```
 
-🧠 Agent Logic Flow
+---
 
-The agent's "thought process" is guided by a system prompt in app.py. Here's how it handles a query:
+## 🧠 Agent Logic Flow
 
-Deconstruct User Query: It first identifies the core entities: destination, total_budget, and duration_days.
+The agent's "thought process" is guided by a system prompt in `app.py`:
 
-Calculate Budgets: It calculates the maximum nightly price for hotels by allocating a portion of the total budget (e.g., 45%).
+1. **Deconstruct User Query:** Identify destination, total_budget, and duration_days.
+2. **Calculate Budgets:** Allocate a portion of the total budget for hotels (e.g., 45%).
+3. **Invoke Tools:**
+    - `find_hotels(city, max_price)`: Booking Scraper API.
+    - `get_weather_info(city)`: Open-Meteo API.
+    - `get_daily_spend_estimate(city)`: Mock estimation tool.
+4. **Synthesize the Plan:** Aggregate the information.
+5. **Generate Final Response:** Present a comprehensive travel plan.
 
-Invoke Tools: Based on its plan, the agent calls the necessary tools in sequence:
+---
 
-find_hotels(city, max_price): Calls the Booking Scraper API.
+## 📁 Project Structure
 
-get_weather_info(city): Calls the Open-Meteo API.
-
-get_daily_spend_estimate(city): Calls our mock estimation tool.
-
-Synthesize the Plan: The agent aggregates all the information gathered from the tools.
-
-Generate Final Response: It formats the aggregated data into a user-friendly, comprehensive travel plan and presents it as the final answer.
-
-📁 Project Structure
+```
 /travel-agentic-rag
 |-- .env                 # Secret API keys (ignored by Git)
 |-- .env.example         # Template for environment variables
 |-- app.py               # Main application logic: Agent setup, FastAPI server, CLI runner
-|-- tools.py             # Contains all the tools (API-calling functions) for the agent
-|-- requirements.txt     # List of Python dependencies
+|-- tools.py             # Tools (API-calling functions) for the agent
+|-- requirements.txt     # Python dependencies
 `-- README.md            # You are here!
+```
 
-🗺️ Future Improvements
+---
 
-Integrate Real Cost of Living API: Replace the mock get_daily_spend_estimate with a real API like Numbeo for more accurate daily budgets.
+## 🗺️ Future Improvements
 
-Add Flight Search Tool: Incorporate a flight search API (e.g., Skyscanner) to include travel costs in the budget.
+- **Integrate Real Cost of Living API:** Replace the mock `get_daily_spend_estimate` with a real API like Numbeo.
+- **Add Flight Search Tool:** Incorporate a flight search API (e.g., Skyscanner).
+- **Build a Web UI:** Create a frontend using Streamlit or React.
+- **Implement Caching:** Store API responses for popular destinations.
+- **Add Conversation Memory:** Enable the agent to remember conversation context for follow-ups.
 
-Build a Web UI: Create a simple frontend using Streamlit or React to provide a more interactive user experience.
+---
 
-Implement Caching: Use a simple cache (like Redis) to store API responses for popular destinations to reduce latency and API calls.
+## 📄 License
 
-Add Conversation Memory: Allow for follow-up questions, enabling the agent to remember the context of the current conversation.
-
-📄 License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
