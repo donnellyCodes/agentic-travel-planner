@@ -103,12 +103,7 @@ A RapidAPI Account and Key.
 2. Clone the Repository
 git clone https://github.com/your-username/travel-agentic-rag.git
 cd travel-agentic-rag
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 3. Create and Activate a Virtual Environment
 
 It is highly recommended to use a virtual environment to manage dependencies.
@@ -117,34 +112,19 @@ On macOS/Linux:
 
 python3 -m venv venv
 source venv/bin/activate
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 
 On Windows:
 
 python -m venv venv
 .\venv\Scripts\activate
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 4. Install Dependencies
 
 Install all the required Python packages from the requirements.txt file.
 
 pip install -r requirements.txt
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 5. Set Up API Keys
 
 You need to provide your API keys in a .env file.
@@ -152,24 +132,13 @@ You need to provide your API keys in a .env file.
 Create a file named .env by copying the example file:
 
 cp .env.example .env
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
 
 Open the .env file and add your secret keys:
 
 # .env
 OPENAI_API_KEY="sk-..."
 RAPIDAPI_KEY="..."
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Ini
-IGNORE_WHEN_COPYING_END
+
 
 Get Your Keys:
 
@@ -194,26 +163,16 @@ You can run the agent in two ways: as a command-line tool for testing or as a Fa
 This is the best way to quickly test the agent's functionality.
 
 python app.py cli
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 
 You will be prompted to enter your travel query. Type exit to quit.
 
 2. Run the FastAPI Server
 
 This exposes the agent's logic as an API endpoint.
-
+``bash
 uvicorn app:app --reload
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 
 The server will be running at http://127.0.0.1:8000.
 
@@ -232,12 +191,7 @@ curl -X 'POST' \
   "budget": 1000,
   "duration_days": 4
 }'
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+
 🧠 Agent Logic Flow
 
 The agent's "thought process" is guided by a system prompt in app.py. Here's how it handles a query:
@@ -266,11 +220,7 @@ Generate Final Response: It formats the aggregated data into a user-friendly, co
 |-- tools.py             # Contains all the tools (API-calling functions) for the agent
 |-- requirements.txt     # List of Python dependencies
 `-- README.md            # You are here!
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-IGNORE_WHEN_COPYING_END
+
 🗺️ Future Improvements
 
 Integrate Real Cost of Living API: Replace the mock get_daily_spend_estimate with a real API like Numbeo for more accurate daily budgets.
